@@ -1,0 +1,80 @@
+<html>
+    <body style="background:#f0f0f0; margin:0;">
+        <div id="window" class="window" style="margin: 0 auto; position:relative;top:200px;background:white;width:400px;height:400px;border:solid;border-width:3px;">
+            <div id="Cube" class="Cube" style="position:absolute;background-color:blue;width:50px;height:50px;left: 0; top: 0;">
+
+            </div>
+        </div>
+        <script>
+            var Cube = document.getElementById("Cube")
+            var Container = document.getElementById("window")
+            var size = 50; //Cube Size
+            var step = 50;
+            var direction = "right"
+           
+
+            setInterval(function () {
+                var left = parseFloat(Cube.style.left);
+                var top = parseFloat(Cube.style.top);
+
+                console.log("passiert")
+                if (direction == "right") {
+                    if (left == 350)
+                    {
+                        Cube.style.left = 0 + "px";
+                    }
+                    else
+                    {
+                        Cube.style.left = parseFloat(Cube.style.left) + step + "px";
+                    } 
+                }
+                if (direction == "up") {
+                    if (top == 0) {
+                        Cube.style.top = 350 + "px";
+                    }
+                    else {
+                        Cube.style.top = parseFloat(Cube.style.top) - step + "px";
+                    }
+                }
+                if (direction == "down") {
+                    if (top == 350) {
+                        Cube.style.top = 0 + "px";
+                    }
+                    else {
+                        Cube.style.top = parseFloat(Cube.style.top) + step + "px";
+                    }
+                }
+                if (direction == "left") {
+                    if (left == 0) {
+                        Cube.style.left = 350 + "px";
+                    }
+                    else {
+                        Cube.style.left = parseFloat(Cube.style.left) - step + "px";
+                    }
+                }
+            }, 500);
+            
+
+            document.addEventListener("keydown", function (e) {
+               
+
+                if (e.key == "ArrowUp" ) {
+                    //console.log(Cube.style.top)
+                    direction = "up"
+                }
+                if (e.key == "ArrowDown" ) {
+                    //console.log(Cube.style.top)
+                   direction = "down"                   
+                }
+                if (e.key == "ArrowRight" ) {
+                    direction = "right"
+                }
+                if (e.key == "ArrowLeft" ) { 
+                    direction = "left"
+                }
+               
+              
+            })
+        </script>
+    </body>
+</html>
